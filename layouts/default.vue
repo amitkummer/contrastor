@@ -3,13 +3,20 @@
     <v-app-bar dark app fixed color="purple">
       <v-toolbar-title> Site Name </v-toolbar-title>
       <v-divider class="mx-4" vertical></v-divider>
-      <v-toolbar-item> Contrast Test </v-toolbar-item>
+      <v-toolbar-item>
+        <v-btn text nuxt :href="home.to"> Contrast Test </v-btn>
+      </v-toolbar-item>
       <v-divider class="mx-4" vertical></v-divider>
-      <v-toolbar-item> About </v-toolbar-item>
+      <v-toolbar-item>
+        <v-btn text nuxt :href="about.to"> About </v-btn>
+      </v-toolbar-item>
       <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>mdi-github</v-icon>
-      </v-btn>
+      <v-toolbar-item>
+        <v-btn text>
+          Github Repo
+          <v-icon class="ml-5">mdi-github</v-icon>
+        </v-btn>
+      </v-toolbar-item>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -29,6 +36,12 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
+      about: {
+        to: '/about',
+      },
+      home: {
+        to: '/',
+      },
       items: [
         {
           icon: 'mdi-apps',
