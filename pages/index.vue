@@ -1,20 +1,25 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-card class="px-5 mx-5">
-      <v-card-title>Background Color</v-card-title>
-      <v-color-picker
-        v-model="backgroundColor"
-        align-self="center"
-      ></v-color-picker>
+  <v-content>
+    <v-row justify="center" align="center">
+      <v-card class="px-5 mx-5">
+        <v-card-title>Background Color</v-card-title>
+        <v-color-picker
+          v-model="backgroundColor"
+          align-self="center"
+        ></v-color-picker>
+      </v-card>
+      <v-card class="px-5 mx-5">
+        <v-card-title>Foreground Color</v-card-title>
+        <v-color-picker v-model="foregroundColor"></v-color-picker>
+      </v-card>
+    </v-row>
+    <v-card>
+      <v-card-title>
+        Contrast Ratio:
+        {{ contrast(foregroundColor, backgroundColor) }}
+      </v-card-title>
     </v-card>
-    <v-card class="px-5 mx-5">
-      <v-card-title>Foreground Color</v-card-title>
-      <v-color-picker v-model="foregroundColor"></v-color-picker>
-    </v-card>
-    <div>{{ backgroundColor }}</div>
-    <div>{{ foregroundColor }}</div>
-    <div>{{ contrast(foregroundColor, backgroundColor) }}</div>
-  </v-row>
+  </v-content>
 </template>
 
 <script>
