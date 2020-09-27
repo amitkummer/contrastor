@@ -1,5 +1,5 @@
 <template>
-  <v-content>
+  <v-main>
     <v-row justify="center" align="center">
       <v-card class="px-5 mx-5">
         <v-card-title>Background Color</v-card-title>
@@ -19,7 +19,7 @@
         {{ Number(contrast(foregroundColor, backgroundColor)).toFixed(3) }}
       </v-card-title>
     </v-card>
-  </v-content>
+  </v-main>
 </template>
 
 <script>
