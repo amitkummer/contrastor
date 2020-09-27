@@ -1,7 +1,16 @@
 <template>
   <v-row justify="center" align="center">
-    <v-color-picker v-model="backgroundColor" class="mx-14"></v-color-picker>
-    <v-color-picker v-model="foregroundColor" class="mx-14"></v-color-picker>
+    <v-card class="px-5 mx-5">
+      <v-card-title>Background Color</v-card-title>
+      <v-color-picker
+        v-model="backgroundColor"
+        align-self="center"
+      ></v-color-picker>
+    </v-card>
+    <v-card class="px-5 mx-5">
+      <v-card-title>Foreground Color</v-card-title>
+      <v-color-picker v-model="foregroundColor"></v-color-picker>
+    </v-card>
     <div>{{ backgroundColor }}</div>
     <div>{{ foregroundColor }}</div>
     <div>{{ contrast(foregroundColor, backgroundColor) }}</div>
