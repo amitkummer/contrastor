@@ -2,21 +2,17 @@
   <v-app>
     <v-app-bar dark app fixed color="purple">
       <v-toolbar-title> Site Name </v-toolbar-title>
-      <v-divider class="mx-4" vertical></v-divider>
-      <v-toolbar-item>
+      <v-toolbar-items class="ml-3">
         <v-btn text nuxt :to="home.to"> Test Contrast </v-btn>
-      </v-toolbar-item>
-      <v-divider class="mx-4" vertical></v-divider>
-      <v-toolbar-item>
         <v-btn text nuxt :to="about.to"> About </v-btn>
-      </v-toolbar-item>
+      </v-toolbar-items>
       <v-spacer></v-spacer>
-      <v-toolbar-item>
+      <v-toolbar-items>
         <v-btn text>
           Github Repo
           <v-icon class="ml-5">mdi-github</v-icon>
         </v-btn>
-      </v-toolbar-item>
+      </v-toolbar-items>
     </v-app-bar>
     <v-main>
       <v-container>
