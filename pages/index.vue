@@ -13,10 +13,10 @@
         <v-color-picker v-model="foregroundColor"></v-color-picker>
       </v-card>
     </v-row>
-    <v-card class="ml-auto mr-auto mt-7" width="210px">
+    <v-card class="ml-auto mr-auto mt-7" width="240px">
       <v-card-title>
         Contrast Ratio:
-        {{ contrast(foregroundColor, backgroundColor) }}
+        {{ Number(contrast(foregroundColor, backgroundColor)).toFixed(3) }}
       </v-card-title>
     </v-card>
   </v-content>
