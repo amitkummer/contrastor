@@ -4,11 +4,11 @@
       <v-toolbar-title> Site Name </v-toolbar-title>
       <v-divider class="mx-4" vertical></v-divider>
       <v-toolbar-item>
-        <v-btn text nuxt :href="home.to"> Contrast Test </v-btn>
+        <v-btn text nuxt :to="home.to"> Test Contrast </v-btn>
       </v-toolbar-item>
       <v-divider class="mx-4" vertical></v-divider>
       <v-toolbar-item>
-        <v-btn text nuxt :href="about.to"> About </v-btn>
+        <v-btn text nuxt :to="about.to"> About </v-btn>
       </v-toolbar-item>
       <v-spacer></v-spacer>
       <v-toolbar-item>
