@@ -8,7 +8,7 @@
       </v-toolbar-items>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <v-btn text>
+        <v-btn text :href="github.to">
           Github Repo
           <v-icon class="ml-5">mdi-github</v-icon>
         </v-btn>
@@ -37,6 +37,9 @@ export default {
       },
       home: {
         to: '/',
+      },
+      github: {
+        to: 'https://github.com/amitkummer/contrastor',
       },
       items: [
         {
