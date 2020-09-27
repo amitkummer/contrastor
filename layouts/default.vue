@@ -35,6 +35,9 @@ export default {
       home: {
         to: '/',
       },
+      github: {
+        to: 'https://github.com/amitkummer/contrastor',
+      },
     }
   },
 }
