@@ -24,9 +24,38 @@
 
 <script>
 function contrastRatio(lighter, darker) {
-  const lighterLuminance = relLuminance(lighter)
-  const darkerLuminance = relLuminance(darker)
-  return (lighterLuminance + 0.05) / (darkerLuminance + 0.05)
+  // Case where background has alpha == 1
+  if (lighter.rgba.a >= 1) {
+    if (darker.rgba.a < 1) {
+      darker = overlayOn(darker, lighter)
+    }
+    const lighterLuminance = relLuminance(lighter)
+    const darkerLuminance = relLuminance(darker)
+    return (lighterLuminance + 0.05) / (darkerLuminance + 0.05)
+  }
+  // Case where background is semi-transperent
+  // https://github.com/LeaVerou/contrast-ratio/blob/gh-pages/color.js#L122
+  return 1337
+}
+
+function overlayOn(overlaid, background) {
+  // Background color alpha should always be 1.
+  const r =
+    overlaid.rgba.r * overlaid.rgba.a +
+    background.rgba.r * (1 - overlaid.rgba.a)
+  const g =
+    overlaid.rgba.g * overlaid.rgba.a +
+    background.rgba.g * (1 - overlaid.rgba.a)
+  const b =
+    overlaid.rgba.b * overlaid.rgba.a +
+    background.rgba.b * (1 - overlaid.rgba.a)
+  return {
+    rgba: {
+      r,
+      g,
+      b,
+    },
+  }
 }
 
 function relLuminance(color) {
@@ -54,7 +83,7 @@ export default {
   methods: {
     contrast(foreground, background) {
       if (foreground && background) {
-        return contrastRatio(foreground, background)
+        return contrastRatio(background, foreground)
       }
     },
   },
