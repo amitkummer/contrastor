@@ -1,6 +1,5 @@
 export { contrastRatio }
 
-// Lighter should be background, darker should be foreground.
 function contrastRatio(backgroundPicker, foregroundPicker) {
   const background = extractRGB(backgroundPicker)
   let foreground = extractRGB(foregroundPicker)
@@ -72,11 +71,12 @@ function intermediateComp(amplitude) {
   return Math.pow((amplitude + 0.055) / 1.055, 2.4)
 }
 
-function getContrast(lighter, darker) {
-  const lighterLuminance = relLuminance(lighter)
-  const darkerLuminance = relLuminance(darker)
-  const contrast = (lighterLuminance + 0.05) / (darkerLuminance + 0.05)
-  return contrast < 1 ? 1 / contrast : contrast
+function getContrast(background, foreground) {
+  const backgroundLuminance = relLuminance(background)
+  const foregroundLuminance = relLuminance(foreground)
+  const greater = Math.max(backgroundLuminance, foregroundLuminance)
+  const lower = Math.min(backgroundLuminance, foregroundLuminance)
+  return (greater + 0.05) / (lower + 0.05)
 }
 
 function overlayOnBlack(overlaid, overlaidAlpha) {
