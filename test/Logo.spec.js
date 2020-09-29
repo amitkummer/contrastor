@@ -58,11 +58,11 @@ describe('Ratio', () => {
     red.rgba.a = 0.25
     black.rgba.a = 0.1
     const result = contrastRatio(red, black)
-    expect(result.variance).toBeCloseTo(0.27)
+    expect(result.variance).toBeCloseTo(0.1)
   })
   test('has correct variance (one transperent)', () => {
     red.rgba.a = 0.25
     const result = contrastRatio(red, black)
-    expect(result.variance).toBeCloseTo(0.27)
+    expect(result.variance).toBeCloseTo(6.132)
   })
 })
