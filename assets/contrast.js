@@ -15,8 +15,8 @@ function contrastRatio(backgroundPicker, foregroundPicker) {
     }
   }
   // If we're here, the background is semi-transperent
-  const backgroundOnBlack = overlayOnBlack(background)
-  const backgroundOnWhite = overlayOnWhite(background)
+  const backgroundOnBlack = overlayOnBlack(background, backgroundPicker.rgba.a)
+  const backgroundOnWhite = overlayOnWhite(background, backgroundPicker.rgba.a)
   let contrastBound1, contrastBound2
   // WE ALWAYS HIT THIS IF STATEMENT
   if (foregroundPicker.rgba.a < 1) {
@@ -79,22 +79,22 @@ function getContrast(lighter, darker) {
   return contrast < 1 ? 1 / contrast : contrast
 }
 
-function overlayOnBlack(overlaid) {
+function overlayOnBlack(overlaid, overlaidAlpha) {
   const black = {
     r: 0,
     g: 0,
     b: 0,
   }
-  return overlayColor(overlaid, 1, black)
+  return overlayColor(overlaid, overlaidAlpha, black)
 }
 
-function overlayOnWhite(overlaid) {
+function overlayOnWhite(overlaid, overlaidAlpha) {
   const white = {
     r: 255,
     g: 255,
     b: 255,
   }
-  return overlayColor(overlaid, 1, white)
+  return overlayColor(overlaid, overlaidAlpha, white)
 }
 
 // Return JS object with rgb properties from vuetify color picker value
