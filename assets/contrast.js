@@ -16,7 +16,7 @@ function contrastRatio(backgroundPicker, foregroundPicker) {
   // If we're here, the background is semi-transperent
   const backgroundOnBlack = overlayOnBlack(background, backgroundPicker.rgba.a)
   const backgroundOnWhite = overlayOnWhite(background, backgroundPicker.rgba.a)
-  let contrastBound1, contrastBound2
+  let contrastBlackBg, contrastWhiteBg
   if (foregroundPicker.rgba.a < 1) {
     const foregroundOnBlackedBg = overlayColor(
       foreground,
@@ -28,14 +28,14 @@ function contrastRatio(backgroundPicker, foregroundPicker) {
       foregroundPicker.rgba.a,
       backgroundOnWhite
     )
-    contrastBound1 = getContrast(foregroundOnBlackedBg, backgroundOnBlack)
-    contrastBound2 = getContrast(foregroundOnWhitedBg, backgroundOnWhite)
+    contrastBlackBg = getContrast(foregroundOnBlackedBg, backgroundOnBlack)
+    contrastWhiteBg = getContrast(foregroundOnWhitedBg, backgroundOnWhite)
   } else {
-    contrastBound1 = getContrast(foreground, backgroundOnBlack)
-    contrastBound2 = getContrast(foreground, backgroundOnWhite)
+    contrastBlackBg = getContrast(foreground, backgroundOnBlack)
+    contrastWhiteBg = getContrast(foreground, backgroundOnWhite)
   }
-  const average = (contrastBound1 + contrastBound2) / 2
-  const variance = Math.abs(average - contrastBound1)
+  const average = (contrastBlackBg + contrastWhiteBg) / 2
+  const variance = Math.abs(average - contrastBlackBg)
   return {
     contrast: average,
     variance,
