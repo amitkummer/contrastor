@@ -50,7 +50,7 @@ export default {
   methods: {
     contrast(foreground, background) {
       if (foreground && background) {
-        return contrastRatio(background, foreground)
+        return contrastRatio(background, foreground).contrast
       }
     },
   },
