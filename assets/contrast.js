@@ -1,34 +1,43 @@
 export { contrastRatio }
 
 // Lighter should be background, darker should be foreground.
-function contrastRatio(lighterPicker, darkerPicker) {
-  const lighter = extractRGB(lighterPicker)
-  let darker = extractRGB(darkerPicker)
+function contrastRatio(backgroundPicker, foregroundPicker) {
+  const background = extractRGB(backgroundPicker)
+  let foreground = extractRGB(foregroundPicker)
   // Case where background has alpha == 1
-  if (lighterPicker.rgba.a >= 1) {
-    if (darkerPicker.rgba.a < 1) {
-      darker = overlayColor(darker, darkerPicker.rgba.a, lighter)
+  if (backgroundPicker.rgba.a >= 1) {
+    if (foregroundPicker.rgba.a < 1) {
+      foreground = overlayColor(foreground, foregroundPicker.rgba.a, background)
     }
     return {
-      contrast: getContrast(lighter, darker),
+      contrast: getContrast(background, foreground),
       variance: 0,
     }
   }
-  // Case where background is semi-transperent
-  const lighterOnBlack = overlayOnBlack(lighter)
-  const lighterOnWhite = overlayOnWhite(lighter)
-  let contrast1, contrast2
-  if (darkerPicker.rgba.a < 1) {
-    const dark1 = overlayColor(darker, darkerPicker.rgba.a, lighterOnBlack)
-    const dark2 = overlayColor(darker, darkerPicker.rgba.a, lighterOnWhite)
-    contrast1 = getContrast(dark1, lighterOnBlack)
-    contrast2 = getContrast(dark2, lighterOnWhite)
+  // If we're here, the background is semi-transperent
+  const backgroundOnBlack = overlayOnBlack(background)
+  const backgroundOnWhite = overlayOnWhite(background)
+  let contrastBound1, contrastBound2
+  // WE ALWAYS HIT THIS IF STATEMENT
+  if (foregroundPicker.rgba.a < 1) {
+    const foregroundOnBlackedBg = overlayColor(
+      foreground,
+      foregroundPicker.rgba.a,
+      backgroundOnBlack
+    )
+    const foregroundOnWhitedBg = overlayColor(
+      foreground,
+      foregroundPicker.rgba.a,
+      backgroundOnWhite
+    )
+    contrastBound1 = getContrast(foregroundOnBlackedBg, backgroundOnBlack)
+    contrastBound2 = getContrast(foregroundOnWhitedBg, backgroundOnWhite)
   } else {
-    contrast1 = getContrast(darker, lighterOnBlack)
-    contrast2 = getContrast(darker, lighterOnWhite)
+    contrastBound1 = getContrast(foreground, backgroundOnBlack)
+    contrastBound2 = getContrast(foreground, backgroundOnWhite)
   }
-  const average = (contrast1 + contrast2) / 2
-  const variance = Math.abs(average - contrast1)
+  const average = (contrastBound1 + contrastBound2) / 2
+  const variance = Math.abs(average - contrastBound1)
   return {
     contrast: average,
     variance,
@@ -66,7 +75,8 @@ function intermediateComp(amplitude) {
 function getContrast(lighter, darker) {
   const lighterLuminance = relLuminance(lighter)
   const darkerLuminance = relLuminance(darker)
-  return (lighterLuminance + 0.05) / (darkerLuminance + 0.05)
+  const contrast = (lighterLuminance + 0.05) / (darkerLuminance + 0.05)
+  return contrast < 1 ? 1 / contrast : contrast
 }
 
 function overlayOnBlack(overlaid) {
@@ -75,7 +85,7 @@ function overlayOnBlack(overlaid) {
     g: 0,
     b: 0,
   }
-  return overlayColor(overlaid, black)
+  return overlayColor(overlaid, 1, black)
 }
 
 function overlayOnWhite(overlaid) {
@@ -84,7 +94,7 @@ function overlayOnWhite(overlaid) {
     g: 255,
     b: 255,
   }
-  return overlayColor(overlaid, white)
+  return overlayColor(overlaid, 1, white)
 }
 
 // Return JS object with rgb properties from vuetify color picker value
