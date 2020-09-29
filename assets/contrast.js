@@ -17,7 +17,6 @@ function contrastRatio(backgroundPicker, foregroundPicker) {
   const backgroundOnBlack = overlayOnBlack(background, backgroundPicker.rgba.a)
   const backgroundOnWhite = overlayOnWhite(background, backgroundPicker.rgba.a)
   let contrastBound1, contrastBound2
-  // WE ALWAYS HIT THIS IF STATEMENT
   if (foregroundPicker.rgba.a < 1) {
     const foregroundOnBlackedBg = overlayColor(
       foreground,

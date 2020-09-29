@@ -35,18 +35,6 @@ export default {
     backgroundPickerValue: null,
     foregroundPickerValue: null,
   }),
-  computed: {
-    foregroundRGB() {
-      // Calculate RGB values of foreground based on it's alpha
-      // and the background color(s).
-      const { a, ...rgb } = this.foregroundPickerValue.rgba
-      return rgb
-    },
-    backgroundRGB: () => {
-      // Calculate RGB values of background based on it's alpha
-      // on white and black backgrounds.
-    },
-  },
   methods: {
     contrast(foreground, background) {
       if (foreground && background) {
