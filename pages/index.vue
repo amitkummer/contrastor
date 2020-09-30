@@ -32,7 +32,7 @@
               variance(foregroundPickerValue, backgroundPickerValue)
             ).toFixed(3)
           }}
-          <v-btn icon class="ml-2" @click="expandInfo = !expandInfo">
+          <v-btn icon class="ml-1" @click="expandInfo = !expandInfo">
             <v-icon>mdi-information</v-icon>
           </v-btn>
         </v-card-title>
