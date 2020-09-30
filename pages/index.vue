@@ -24,7 +24,7 @@
       </v-card-title>
     </v-card>
     <v-col>
-      <v-card class="ml-auto mr-auto" width="220px">
+      <v-card class="ml-auto mr-auto" width="240px">
         <v-card-title>
           Variance:
           {{
@@ -32,7 +32,12 @@
               variance(foregroundPickerValue, backgroundPickerValue)
             ).toFixed(3)
           }}
-          <v-btn icon class="ml-1" @click="expandInfo = !expandInfo">
+          <v-btn
+            icon
+            color="purple"
+            class="ml-auto mr-2"
+            @click="expandInfo = !expandInfo"
+          >
             <v-icon>mdi-information</v-icon>
           </v-btn>
         </v-card-title>
