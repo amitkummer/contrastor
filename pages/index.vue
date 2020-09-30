@@ -23,16 +23,30 @@
         }}
       </v-card-title>
     </v-card>
-    <v-card class="ml-auto mr-auto mt-3" width="215px">
-      <v-card-title>
-        Variance:
-        {{
-          Number(
-            variance(foregroundPickerValue, backgroundPickerValue)
-          ).toFixed(3)
-        }}
-      </v-card-title>
-    </v-card>
+    <v-col>
+      <v-card class="ml-auto mr-auto" width="220px">
+        <v-card-title>
+          Variance:
+          {{
+            Number(
+              variance(foregroundPickerValue, backgroundPickerValue)
+            ).toFixed(3)
+          }}
+          <v-btn icon class="ml-2" @click="expandInfo = !expandInfo">
+            <v-icon>mdi-information</v-icon>
+          </v-btn>
+        </v-card-title>
+      </v-card>
+      <v-expand-transition>
+        <v-card v-show="expandInfo" width="400" class="mx-auto mt-3">
+          <v-card-text>
+            When the background is semi-transperent, the contrast ratio is
+            calculated twice, once with the background overlayed on black and
+            once on white, and the final ratio is the average.
+          </v-card-text>
+        </v-card>
+      </v-expand-transition>
+    </v-col>
   </div>
 </template>
 
@@ -44,6 +58,7 @@ export default {
   data: () => ({
     backgroundPickerValue: null,
     foregroundPickerValue: null,
+    expandInfo: false,
   }),
   methods: {
     contrast(foreground, background) {
