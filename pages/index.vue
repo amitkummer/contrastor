@@ -23,6 +23,16 @@
         }}
       </v-card-title>
     </v-card>
+    <v-card class="ml-auto mr-auto mt-3" width="215px">
+      <v-card-title>
+        Variance:
+        {{
+          Number(
+            variance(foregroundPickerValue, backgroundPickerValue)
+          ).toFixed(3)
+        }}
+      </v-card-title>
+    </v-card>
   </div>
 </template>
 
@@ -39,6 +49,11 @@ export default {
     contrast(foreground, background) {
       if (foreground && background) {
         return contrastRatio(background, foreground).contrast
+      }
+    },
+    variance(foreground, background) {
+      if (foreground && background) {
+        return contrastRatio(background, foreground).variance
       }
     },
   },
