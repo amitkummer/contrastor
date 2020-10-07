@@ -8,7 +8,7 @@
           align-self="center"
         ></v-color-picker>
       </v-card>
-      <v-card class="px-5 mx-5">
+      <v-card class="px-5 mx-5 mt-xs-5">
         <v-card-title>Foreground Color</v-card-title>
         <v-color-picker v-model="foregroundPickerValue"></v-color-picker>
       </v-card>
