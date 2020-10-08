@@ -2,7 +2,7 @@
   <v-app>
     <v-main>
       <v-app-bar dark color="purple" class="d-none d-sm-block">
-        <v-toolbar-title> Site Name </v-toolbar-title>
+        <v-toolbar-title> Contrastor </v-toolbar-title>
         <v-toolbar-items class="ml-3">
           <v-btn text nuxt :to="home.to"> Test Contrast </v-btn>
           <v-btn text nuxt :to="about.to"> About </v-btn>
