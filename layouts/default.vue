@@ -15,9 +15,7 @@
           </v-btn>
         </v-toolbar-items>
       </v-app-bar>
-      <v-container>
-        <nuxt />
-      </v-container>
+      <nuxt />
     </v-main>
     <v-bottom-navigation
       dark
