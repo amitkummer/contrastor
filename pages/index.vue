@@ -19,7 +19,19 @@
         ±
         {{ contrastVariance }}
       </p>
-      <v-alert outlined type="success" class="mx-8">AA Small Text</v-alert>
+      <v-alert outlined :type="smallTextAAType" class="mx-8"
+        >AA Small Text</v-alert
+      >
+      <v-alert outlined :type="largeTextAAType" class="mx-8"
+        >AA Large Text</v-alert
+      >
+      <v-alert outlined :type="smallTextAAAType" class="mx-8"
+        >AAA Small Text</v-alert
+      >
+      <v-alert outlined :type="largeTextAAAType" class="mx-8"
+        >AAA Large Text</v-alert
+      >
+      <v-alert outlined :type="guiAAType" class="mx-8">AA GUI</v-alert>
     </v-card>
   </div>
 </template>
@@ -53,6 +65,21 @@ export default {
     },
     contrastVariance() {
       return Number(this.contrast.variance).toFixed(2)
+    },
+    smallTextAAType() {
+      return this.contrastValue >= 4.5 ? 'success' : 'error'
+    },
+    largeTextAAType() {
+      return this.contrastValue >= 3.0 ? 'success' : 'error'
+    },
+    smallTextAAAType() {
+      return this.contrastValue >= 7.0 ? 'success' : 'error'
+    },
+    largeTextAAAType() {
+      return this.contrastValue >= 4.5 ? 'success' : 'error'
+    },
+    guiAAType() {
+      return this.contrastValue >= 3.0 ? 'success' : 'error'
     },
   },
 }
