@@ -38,11 +38,10 @@
           Why the ±?
         </v-btn>
         <v-expand-transition>
-          <v-card v-show="isWhyExpanded" class="mx-8 mt-3">
-            <v-content>
-              <p class="ma-5">Explanation!</p>
-            </v-content>
-          </v-card>
+          <div v-show="isWhyExpanded">
+            <v-divider class="mt-3"> </v-divider>
+            <p class="mx-8 mt-4 mb-2">Explanation!</p>
+          </div>
         </v-expand-transition>
       </v-card>
     </v-container>
