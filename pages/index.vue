@@ -13,45 +13,22 @@
         <v-color-picker v-model="foregroundPickerValue"></v-color-picker>
       </v-card>
     </v-row>
-    <v-card class="ml-auto mr-auto mt-7" width="240px">
-      <v-card-title>
-        Contrast Ratio:
+    <v-card class="ml-auto mr-auto mt-7 pt-3 pb-3" width="400px">
+      <p class="text-center text-h5 font-weight-medium">
         {{
           Number(
             contrast(foregroundPickerValue, backgroundPickerValue)
-          ).toFixed(3)
+          ).toFixed(1)
         }}
-      </v-card-title>
+        ±
+        {{
+          Number(
+            variance(foregroundPickerValue, backgroundPickerValue)
+          ).toFixed(1)
+        }}
+      </p>
+      <v-alert outlined type="success" class="mx-8">AA Small Text</v-alert>
     </v-card>
-    <v-col>
-      <v-card class="ml-auto mr-auto" width="240px">
-        <v-card-title>
-          Variance:
-          {{
-            Number(
-              variance(foregroundPickerValue, backgroundPickerValue)
-            ).toFixed(3)
-          }}
-          <v-btn
-            icon
-            color="purple"
-            class="ml-auto mr-2"
-            @click="expandInfo = !expandInfo"
-          >
-            <v-icon>mdi-information</v-icon>
-          </v-btn>
-        </v-card-title>
-      </v-card>
-      <v-expand-transition>
-        <v-card v-show="expandInfo" width="400" class="mx-auto mt-3">
-          <v-card-text>
-            When the background is semi-transperent, the contrast ratio is
-            calculated twice, once with the background overlayed on black and
-            once on white, and the final ratio is the average.
-          </v-card-text>
-        </v-card>
-      </v-expand-transition>
-    </v-col>
   </div>
 </template>
 
