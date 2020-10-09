@@ -13,37 +13,39 @@
         <v-color-picker v-model="foregroundPickerValue"></v-color-picker>
       </v-card>
     </v-row>
-    <v-card class="ml-auto mr-auto mb-7 mt-7 pt-3 pb-3" width="400px">
-      <p class="text-center text-h5 font-weight-medium">
-        {{ contrastValue }}
-        ±
-        {{ contrastVariance }}
-      </p>
-      <v-alert outlined :type="smallTextAAType" class="mx-8"
-        >AA Small Text</v-alert
-      >
-      <v-alert outlined :type="largeTextAAType" class="mx-8"
-        >AA Large Text</v-alert
-      >
-      <v-alert outlined :type="smallTextAAAType" class="mx-8"
-        >AAA Small Text</v-alert
-      >
-      <v-alert outlined :type="largeTextAAAType" class="mx-8"
-        >AAA Large Text</v-alert
-      >
-      <v-alert outlined :type="guiAAType" class="mx-8">AA GUI</v-alert>
-      <v-btn text class="ml-3" @click="isWhyExpanded = !isWhyExpanded">
-        <v-icon> {{ whyExpandedIcon }} </v-icon>
-        Why the ±?
-      </v-btn>
-      <v-expand-transition>
-        <v-card v-show="isWhyExpanded" class="mx-8 mt-3">
-          <v-content>
-            <p class="ma-5">Explanation!</p>
-          </v-content>
-        </v-card>
-      </v-expand-transition>
-    </v-card>
+    <v-container class="mt-n5">
+      <v-card class="ml-auto mr-auto mb-7 mt-7 pt-3 pb-3" width="400px">
+        <p class="text-center text-h5 font-weight-medium">
+          {{ contrastValue }}
+          ±
+          {{ contrastVariance }}
+        </p>
+        <v-alert outlined :type="smallTextAAType" class="mx-8"
+          >AA Small Text</v-alert
+        >
+        <v-alert outlined :type="largeTextAAType" class="mx-8"
+          >AA Large Text</v-alert
+        >
+        <v-alert outlined :type="smallTextAAAType" class="mx-8"
+          >AAA Small Text</v-alert
+        >
+        <v-alert outlined :type="largeTextAAAType" class="mx-8"
+          >AAA Large Text</v-alert
+        >
+        <v-alert outlined :type="guiAAType" class="mx-8">AA GUI</v-alert>
+        <v-btn text class="ml-3" @click="isWhyExpanded = !isWhyExpanded">
+          <v-icon> {{ whyExpandedIcon }} </v-icon>
+          Why the ±?
+        </v-btn>
+        <v-expand-transition>
+          <v-card v-show="isWhyExpanded" class="mx-8 mt-3">
+            <v-content>
+              <p class="ma-5">Explanation!</p>
+            </v-content>
+          </v-card>
+        </v-expand-transition>
+      </v-card>
+    </v-container>
   </div>
 </template>
 
