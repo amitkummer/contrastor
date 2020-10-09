@@ -17,11 +17,7 @@
       <p class="text-center text-h5 font-weight-medium">
         {{ contrastValue }}
         ±
-        {{
-          Number(
-            variance(foregroundPickerValue, backgroundPickerValue)
-          ).toFixed(1)
-        }}
+        {{ contrastVariance }}
       </p>
       <v-alert outlined type="success" class="mx-8">AA Small Text</v-alert>
     </v-card>
@@ -46,20 +42,17 @@ export default {
     },
   }),
   computed: {
-    contrastValue() {
-      const value = contrastRatio(
+    contrast() {
+      return contrastRatio(
         this.backgroundPickerValue,
         this.foregroundPickerValue
-      ).contrast
-      return Number(value).toFixed(2)
+      )
     },
-  },
-  methods: {
-    // contrast(foreground, background) {
-    //   return contrastRatio(background, foreground).contrast
-    // },
-    variance(foreground, background) {
-      return contrastRatio(background, foreground).variance
+    contrastValue() {
+      return Number(this.contrast.contrast).toFixed(2)
+    },
+    contrastVariance() {
+      return Number(this.contrast.variance).toFixed(2)
     },
   },
 }
