@@ -58,3 +58,11 @@ export default {
   },
 }
 </script>
+
+<!-- Workaround to bottom navigation problem
+https://github.com/vuetifyjs/vuetify/issues/8067 -->
+<style>
+.v-item-group.v-bottom-navigation .v-btn.v-size--default {
+  height: inherit;
+}
+</style>
