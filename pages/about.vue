@@ -4,13 +4,14 @@
       <v-card-title> About this app </v-card-title>
       <v-card-text>
         <p>
-          Contrast ratio of background and foreground colors in web development
-          is absolute critical to user experience and accessibility.
+          With Contrastor you can check the contrast ratio of any two colors,
+          one acting as a foreground and one acting as a background.
         </p>
         <p>
-          Because of that, I decided making this contrast calculator could be a
-          cool idea for making a Vue app and honing my skills with Nuxt.js.
+          Colors can be inserted in RGBA, HSLA, and HEX formats, thanks to
+          Vuetify's color picker component.
         </p>
+        <p>** ADD formula for calculating new colors depending on hue **</p>
         <p>
           The site is powered by
           <v-chip link small href="https://vuejs.org/"> Vue </v-chip>
