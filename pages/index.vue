@@ -73,10 +73,10 @@ export default {
       )
     },
     contrastValue() {
-      return Number(this.contrast.contrast).toFixed(2)
+      return Number(this.contrast.contrast).toFixed(1)
     },
     contrastVariance() {
-      return Number(this.contrast.variance).toFixed(2)
+      return Number(this.contrast.variance).toFixed(1)
     },
     smallTextAAType() {
       return this.contrastValue >= 4.5 ? 'success' : 'error'
