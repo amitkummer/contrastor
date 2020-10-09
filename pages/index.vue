@@ -13,7 +13,7 @@
         <v-color-picker v-model="foregroundPickerValue"></v-color-picker>
       </v-card>
     </v-row>
-    <v-card class="ml-auto mr-auto mt-7 pt-3 pb-3" width="400px">
+    <v-card class="ml-auto mr-auto mb-7 mt-7 pt-3 pb-3" width="400px">
       <p class="text-center text-h5 font-weight-medium">
         {{ contrastValue }}
         ±
@@ -32,6 +32,17 @@
         >AAA Large Text</v-alert
       >
       <v-alert outlined :type="guiAAType" class="mx-8">AA GUI</v-alert>
+      <v-btn text class="ml-3" @click="isWhyExpanded = !isWhyExpanded">
+        <v-icon> {{ whyExpandedIcon }} </v-icon>
+        Why the ±?
+      </v-btn>
+      <v-expand-transition>
+        <v-card v-show="isWhyExpanded" class="mx-8 mt-3">
+          <v-content>
+            <p class="ma-5">Explanation!</p>
+          </v-content>
+        </v-card>
+      </v-expand-transition>
     </v-card>
   </div>
 </template>
@@ -42,6 +53,7 @@ import { contrastRatio } from '@/assets/contrast.js'
 export default {
   components: {},
   data: () => ({
+    isWhyExpanded: false,
     backgroundPickerValue: {
       rgba: { r: 255, g: 0, b: 255, a: 1 },
       hsla: { h: 300, s: 1, l: 0.5, a: 1 },
@@ -80,6 +92,9 @@ export default {
     },
     guiAAType() {
       return this.contrastValue >= 3.0 ? 'success' : 'error'
+    },
+    whyExpandedIcon() {
+      return this.isWhyExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'
     },
   },
 }
