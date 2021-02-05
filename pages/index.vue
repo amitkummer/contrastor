@@ -40,7 +40,12 @@
         <v-expand-transition>
           <div v-show="isWhyExpanded">
             <v-divider class="mt-3"> </v-divider>
-            <p class="mx-8 mt-4 mb-2">Explanation!</p>
+            <p class="mx-8 mt-4 mb-2">
+              When the background color is transparent the contrast ratio is the
+              average of ratios when the background color is displayed on black and 
+              white backgrounds. The ± is the difference of the black and white
+              ratios from the average.
+              </p>
           </div>
         </v-expand-transition>
       </v-card>

@@ -11,7 +11,6 @@
           Colors can be inserted in RGBA, HSLA, and HEX formats, thanks to
           Vuetify's color picker component.
         </p>
-        <p>** ADD formula for calculating new colors depending on hue **</p>
         <p>
           The site is powered by
           <v-chip link small href="https://vuejs.org/"> Vue </v-chip>
